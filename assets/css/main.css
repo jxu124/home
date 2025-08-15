@@ -2422,6 +2422,31 @@ input, select, textarea {
 		padding-left: 1.25em;
 	}
 
+	.references {
+		list-style: none;
+		padding-left: 0;
+		margin: 0;
+		counter-reset: ref-counter;
+	}
+
+	.references li {
+		position: relative;
+		padding-left: 3em; /* 更大的左边距 */
+		margin-bottom: 0.5em;
+	}
+
+	.references li::before {
+		counter-increment: ref-counter;
+		content: "[" counter(ref-counter) "]";
+		position: absolute;
+		left: 0;
+		font-weight: bold;
+		min-width: 2.5em; /* 确保编号对齐 */
+		text-align: right;
+		padding-right: 0.5em;
+		box-sizing: border-box;
+	}
+
 		ol li {
 			padding-left: 0.25em;
 		}
