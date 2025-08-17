@@ -9,28 +9,10 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#A36d9c',
-                        secondary: '#6C1D02',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
             .video-container {
                 aspect-ratio: 16 / 9;
             }
@@ -41,40 +23,33 @@
     <header class="bg-primary text-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold">
-                <i class="fa fa-play-circle mr-2"></i> Player
+                <i class="bi bi-play-circle-fill mr-2"></i> Video Player
             </h1>
-            <div id="video-info" class="text-sm opacity-90"></div>
         </div>
     </header>
-
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <div class="bg-white rounded-lg shadow-lg p-4 md:p-6 max-w-6xl mx-auto">
-            <!-- 加载状态提示 -->
-            <div id="loading" class="flex flex-col items-center justify-center video-container bg-gray-100 rounded-lg">
-                <i class="fa fa-circle-o-notch fa-spin text-4xl text-primary mb-4"></i>
-                <p class="text-gray-600">Loading...</p>
+    
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-4 max-w-6xl mx-auto">
+            <!-- Loading state -->
+            <div id="loading" class="flex items-center justify-center video-container bg-gray-100 rounded-lg">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
 
-            <!-- 错误提示 (默认隐藏) -->
-            <div id="error" class="hidden hidden hidden flex-col items-center justify-center video-container bg-gray-100 rounded-lg">
-                <i class="fa fa-exclamation-triangle text-4xl text-yellow-500 mb-4"></i>
-                <p id="error-message" class="text-gray-600">error</p>
-                <button id="retry-btn" class="mt-4 bg-primary hover:bg-secondary text-white px-4 py-2 rounded-md transition duration-300">
-                    retry
-                </button>
+            <!-- Error state -->
+            <div id="error" class="hidden flex items-center justify-center video-container bg-gray-100 rounded-lg">
+                <p class="text-red-500">Error loading video</p>
             </div>
 
-            <!-- 视频播放器 (默认隐藏) -->
+            <!-- Video player -->
             <div id="video-player-container" class="hidden">
                 <video id="video-player" class="w-full h-full object-contain bg-black rounded-lg" controls>
-                    error
+                    Your browser does not support HTML5 video.
                 </video>
             </div>
         </div>
     </main>
 
     <script>
-        // 从URL获取参数
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -82,69 +57,39 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // 加载并播放视频
         function loadVideo() {
             const videoUrl = getUrlParameter('url');
             const videoElement = document.getElementById('video-player');
             const loadingDiv = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
             const videoContainer = document.getElementById('video-player-container');
-            const videoInfo = document.getElementById('video-info');
 
-            // 显示视频URL（截断长URL）
-            videoInfo.textContent = ``
-
-            // 检查是否提供了视频URL
             if (!videoUrl) {
-                showError('NOT FOUND');
+                loadingDiv.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
                 return;
             }
 
-            // 显示加载状态
             loadingDiv.classList.remove('hidden');
             errorDiv.classList.add('hidden');
             videoContainer.classList.add('hidden');
 
-            // 设置视频源并加载
             videoElement.src = videoUrl;
             
-            // 视频可以播放时
             videoElement.oncanplay = function() {
                 loadingDiv.classList.add('hidden');
                 videoContainer.classList.remove('hidden');
-                videoElement.play().catch(err => {
-                    console.log('自动播放失败:', err);
-                    // 自动播放可能被浏览器阻止，这里不显示错误，让用户手动点击播放
-                });
+                videoElement.play().catch(err => console.log('Auto-play prevented:', err));
             };
 
-            // 视频加载错误时
             videoElement.onerror = function() {
-                showError('CANNOT LOAD');
+                loadingDiv.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+                videoContainer.classList.add('hidden');
             };
         }
 
-        // 显示错误信息
-        function showError(message) {
-            const loadingDiv = document.getElementById('loading');
-            const errorDiv = document.getElementById('error');
-            const errorMessage = document.getElementById('error-message');
-            const videoContainer = document.getElementById('video-player-container');
-
-            loadingDiv.classList.add('hidden');
-            videoContainer.classList.add('hidden');
-            errorDiv.classList.remove('hidden');
-            errorMessage.textContent = message;
-        }
-
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            // 重试按钮事件
-            document.getElementById('retry-btn').addEventListener('click', loadVideo);
-            
-            // 加载视频
-            loadVideo();
-        });
+        document.addEventListener('DOMContentLoaded', loadVideo);
     </script>
 </body>
 </html>
