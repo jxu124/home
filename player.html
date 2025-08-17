@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .video-container {
+                aspect-ratio: 16 / 9;
+            }
+        }
+    </style>
+</head>
+<body class="is-preload bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">
+                <i class="bi bi-play-circle-fill mr-2"></i> Video Player
+            </h1>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-4 max-w-6xl mx-auto">
+            <!-- Loading state -->
+            <div id="loading" class="flex items-center justify-center video-container bg-gray-100 rounded-lg">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+
+            <!-- Error state -->
+            <div id="error" class="hidden flex items-center justify-center video-container bg-gray-100 rounded-lg">
+                <p class="text-red-500">Error loading video</p>
+            </div>
+
+            <!-- Video player -->
+            <div id="video-player-container" class="hidden">
+                <video id="video-player" class="w-full h-full object-contain bg-black rounded-lg" controls>
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function loadVideo() {
+            const videoUrl = getUrlParameter('url');
+            const videoElement = document.getElementById('video-player');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const videoContainer = document.getElementById('video-player-container');
+
+            if (!videoUrl) {
+                loadingDiv.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            loadingDiv.classList.remove('hidden');
+            errorDiv.classList.add('hidden');
+            videoContainer.classList.add('hidden');
+
+            videoElement.src = videoUrl;
+            
+            videoElement.oncanplay = function() {
+                loadingDiv.classList.add('hidden');
+                videoContainer.classList.remove('hidden');
+                videoElement.play().catch(err => console.log('Auto-play prevented:', err));
+            };
+
+            videoElement.onerror = function() {
+                loadingDiv.classList.add('hidden');
+                errorDiv.classList.remove('hidden');
+                videoContainer.classList.add('hidden');
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', loadVideo);
+    </script>
+</body>
+</html>
