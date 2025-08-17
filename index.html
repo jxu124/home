@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Jie Xu</title>
@@ -53,8 +48,7 @@
 										<h2>About me</h2>
 									</header>
 									<p>
-										许杰，博士研究生，就读于西安交通大学人工智能学院，研究方向为机器人和
-										人机交互，师从
+										许杰，博士研究生，就读于西安交通大学人工智能学院，研究方向为机器人和人机交互，师从
 										<a href="https://gr.xjtu.edu.cn/web/zeuslan">兰旭光教授</a>
 										。近期专注于机器人多模态交互模型与VLA机器人操作模型研究。
 									</p>
@@ -69,10 +63,8 @@
 									</p>
 									<a class="icon brands bi-envelope-fill" href="mailto:xujiexx@gmail.com"> Email: <u>xujiexx@gmail.com</u></a>
 								</div>
-								<!-- <span class="image"><img src="images/ava01.jpg" alt="" /></span> -->
-								
 								<span class="image">
-									<img src="images/ava01.jpg" data-src="images/ava01.jpg" class="dynamic-src" alt=""/>
+									<img id="load-cdn" src="files/ava01.jpg" data-src="files/ava01.jpg" class="dynamic-src" alt=""/>
 								</span>
 								
 							</div>
@@ -118,29 +110,60 @@
 							<header class="major">
 								<h2>Projects</h2>
 							</header>
+
+							<h3>2024 &bullet; RoboICL 机器人操纵的上下文学习</h3>
+							<blockquote style="text-align: left;">
+								简介：该项目的任务任务是将上下文学习（In-Context Learning, ICL）应用于机器人操纵领域，难点在于此前相关研究未充分借鉴语言领域 ICL 的成功经验。为此，提出 RoboICL，这是一种自回归机器人基础模型，通过将视觉、语言和动作标记化为统一离散空间，基于视觉 - 语言数据集和机器人操纵数据集训练语言模型，并应用上下文微调，仅基于下一个标记预测进行训练。实验结果表明，ICL 显著提升了模型在基本操纵和泛化场景中的性能，RoboICL 达到了最先进的操纵性能水平。
+							</blockquote>
+							<img id="load-cdn" data-src="files/compressed-333307275-roboicl.webp" class="rounded-video">
+
 							
-							<ul class="features">
-								<li>
-									<span class="icon solid major style1 fa-code"></span>
-									<h3>Ipsum consequat</h3>
-									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-								</li>
-								<li>
-									<span class="icon major style3 fa-copy"></span>
-									<h3>Amed sed feugiat</h3>
-									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-								</li>
-								<li>
-									<span class="icon major style5 fa-gem"></span>
-									<h3>Dolor nullam</h3>
-									<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-								</li>
-							</ul>
-							<footer class="major">
-								<ul class="actions special">
-									<li><a href="generic.html" class="button">Learn More</a></li>
-								</ul>
-							</footer>
+							<hr />
+
+							<h3>2024 &bullet; SInViG 交互消歧模型的自我迭代进化方法</h3>
+							<blockquote style="text-align: left;">
+								简介：该项目的任务是要进一步解决人机交互中的语言歧义问题，难点在于日常环境中视觉输入复杂不可预测、交互开放且用户需求多样。为此，提出了 SInViG，一种基于自然语言的自进化交互式视觉代理，它通过多轮视觉语言对话来消除歧义，能自动从未标注图像和大语言模型中学习。效果是在多个交互式视觉基础基准上取得了最优成绩，获得了用户更多偏好，且在 Franka 机器人上的实验表明它能在复杂环境中遵循用户指令并自然交互。
+							</blockquote>
+							<video id="load-cdn"  class="rounded-video" controls data-poster="files/poster/sinvig_demo_video.webp">
+								<source id="load-cdn" data-src="files/sinvig_demo_video.mp4" type="video/mp4">
+							</video>
+							<hr />
+
+							<h3>2023 &bullet; TiO 交互式视觉定位方法及其机器人系统</h3>
+							<blockquote style="text-align: left;">
+								简介：该项目的任务是要实现机器人准确交互式视觉定位并为人类提供物体，难点在于自然语言可能存在歧义，需机器人主动收集信息来消除，而先前方法依赖预定义模板，在现实场景中性能不佳。为此，提出了 TiO 端到端系统，它基于视觉对话和定位的统一公式，可在大量公共数据上进行训练。实验结果表明，TiO 在 GuessWhat?! 和 InViG 基准测试中取得了新的最优性能，在 150 个具有挑战性的场景及真实机器人平台上的人机交互实验也显示出其对多样化视觉和语言输入具有卓越的通用性和高成功率。
+							</blockquote>
+							<video id="load-cdn" class="rounded-video" controls data-poster="files/poster/tio_23_1024.webp">
+								<source id="load-cdn" data-src="files/tio_23_1024.mp4" type="video/mp4">
+							</video>
+							<hr />
+
+							<h3>2022 &bullet; 运动预测的持续学习方法</h3>
+							<blockquote style="text-align: left;">
+								简介：该项目的任务是要实现人机交互中准确的概率性人体运动预测，难点在于现有算法依赖预收集数据，无法处理不熟悉的运动模式且未考虑协作方的实时响应。为此，提出一种针对运动预测模型的持续学习方法，通过贝叶斯神经网络安全收集在线交互数据，并利用经验重放和知识蒸馏提升模型能力，同时保留先前知识。实验结果表明，该方法在评测集上预测误差更低，能持续学习新运动模式且不遗忘已学知识，在真实场景中还能从零学习人体运动学模型，能有效保障人机交互安全。
+							</blockquote>
+							<video id="load-cdn" class="rounded-video" controls data-poster="files/poster/202205.webp">
+								<source id="load-cdn" data-src="files/202205.mp4" type="video/mp4">
+							</video>
+							<hr />
+
+							<h3>2017 &bullet; 全国电子设计竞赛 &bullet; 滚球控制系统</h3>
+							<blockquote style="text-align: left;">
+								简介：滚球控制系统赛题要求设计一套控制系统，通过控制边长 65cm 光滑正方形平板倾斜，使直径不大于 2.5cm 小球按指定要求在平板上 9 个外径 3cm 圆形区域间完成动作并计时显示；难点在于小球运动轨迹的精确控制，涉及复杂的机械设计与自动控制算法应用及视觉伺服控制应用等，且小球运动易受平板材质、支撑结构、摩擦力等多种因素影响 。
+							</blockquote>
+							<video id="load-cdn" class="rounded-video" style="object-fit: cover;" controls data-poster="files/poster/201710.webp">
+								<source id="load-cdn" data-src="files/201710.mp4" type="video/mp4">
+							</video>
+							<hr />
+
+							<h3>2017 &bullet; 全国工训竞赛 &bullet; 无碳小车越障竞赛</h3>
+							<blockquote style="text-align: left;">
+								简介：无碳小车越障赛题要求设计一种三轮结构小车，仅靠质量 1Kg、下降高度 400±2mm 的标准砝码提供的重力势能驱动行走及转向，且砝码全程随车载运，同时小车需具备可调节的转向控制机构，以适应不同间距障碍物场地，难点在于如何高效利用有限重力势能实现稳定行走与精准转向。
+							</blockquote>
+							<video id="load-cdn" class="rounded-video" controls data-poster="files/poster/201705.webp">
+								<source id="load-cdn" data-src="files/201705.mp4" type="video/mp4">
+							</video>
+
 						</section>
 
 					<!-- Publications Section -->
@@ -155,15 +178,15 @@
 								<b>Jie Xu</b>, Hanbo Zhang, Xinghang Li, Huaping Liu, Xuguang Lan, Tao Kong. <br/>
 								<b>ICRA Workshop 2024.</b> 
 								[<a href="https://arxiv.org/abs/2402.11792" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="player.html?url=https://home-1257933320.cos.ap-guangzhou.myqcloud.com/Video/sinvig_demo_video.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Video</a>]
+								[<a id="load-cdn" href="player.html?url=" data-src="files/sinvig_demo_video.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Video</a>]
 								<br/><br/>
 
 								<b style="font-size: 14pt;">Towards Unified Interactive Visual Grounding in The Wild. </b> <br/>
 								<b>Jie Xu</b>, Hanbo Zhang, Qingyi Si, Yifeng Li, Xuguang Lan, Tao Kong. <br/>
 								<b>ICRA 2024.</b> 
 								[<a href="https://arxiv.org/abs/2401.16699" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="player.html?url=https://home-1257933320.cos.ap-guangzhou.myqcloud.com/Video/icra2024_fin_20mb.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Video</a>]
-								[<a href="player.html?url=https://home-1257933320.cos.ap-guangzhou.myqcloud.com/Video/TIO_23_1024.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Demo</a>]
+								[<a id="load-cdn" href="player.html?url=" data-src="files/icra2024_fin_20mb.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Video</a>]
+								[<a id="load-cdn" href="player.html?url=" data-src="files/tio_23_1024.mp4" class="icon brands bi-film" target="_blank" rel="noopener noreferrer"> Demo</a>]
 								[<a href="https://jxu124.github.io/TiO" class="icon brands bi-globe" target="_blank" rel="noopener noreferrer"> Website</a>]
 								[<a href="https://huggingface.co/jxu124/TiO" class="icon brands bi-code-slash" target="_blank" rel="noopener noreferrer"> Code</a>]
 								<br/><br/>
@@ -181,7 +204,7 @@
 								Chao Zhao, <b>Jie Xu</b>, Ru Peng, Xingyu Chen, Kuizhi Mei, Xuguang Lan. <br/>
 								<b>ICRA 2024.</b> 
 								[<a href="https://ieeexplore.ieee.org/document/10611494" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="#" class="icon brands bi-film"> Video</a>]
+								[<a class="icon brands bi-film"> Video</a>]
 								<br/><br/>
 
 								<b style="font-size: 14pt;">InViG: enchmarking Open-Ended Interactive Visual Grounding with 500K Dialogues. </b> <br/>
@@ -196,21 +219,21 @@
 								<b>Jie Xu</b>*, Shihong Wang*, Xingyu Chen, Jiahao Zhang, Xuguang Lan, Nanning Zheng. <br/>
 								<b>ICRA 2022.</b> 
 								[<a href="https://ieeexplore.ieee.org/document/9811906" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="#" class="icon brands bi-film"> Video</a>]
+								[<a href="player.html?url=files/202205.mp4" class="icon brands bi-film"> Video</a>]
 								<br/><br/>
 
 								<b style="font-size: 14pt;">Probabilistic Human Motion Prediction via A Bayesian Neural Network. </b> <br/>
 								<b>Jie Xu</b>*, Xingyu Chen*, Xuguang Lan, Nanning Zheng. <br/>
 								<b>ICRA 2021.</b> 
 								[<a href="https://arxiv.org/abs/2107.06564" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="#" class="icon brands bi-film"> Video</a>]
+								[<a class="icon brands bi-film"> Video</a>]
 								<br/><br/>
 
 								<b style="font-size: 14pt;">EAN: Error Attenuation Network for Long-term Human Motion Prediction.</b> <br/>
 								<b>Jie Xu</b>, Xuguang Lan, Jin Li, Xingyu Chen, Nanning Zheng. <br/>
 								<b>CCHI 2019.</b> 
 								[<a href="https://ieeexplore.ieee.org/document/8901951" class="icon brands bi-file-text" target="_blank" rel="noopener noreferrer"> Paper</a>]
-								[<a href="#" class="icon brands bi-film"> Video</a>]
+								[<a class="icon brands bi-film"> Video</a>]
 								<br/><br/>
 							</p>
 						</section>
@@ -319,7 +342,7 @@
 
 						</section>
 						<section>
-							<h2>Jie Xu</h2>
+							<h2>Contact Me</h2>
 							<dl class="alt">
 								<dt>Address</dt>
 								<dd>陕西省西安市咸宁西路28号 &bull; 710049 &bull; China</dd>
@@ -338,67 +361,52 @@
 						</section>
 						<p class="copyright">&copy; Jie Xu - 2025</p>
 					</footer>
-
 			</div>
 
 		<!-- Scripts -->
+			<script>
+				const sources = {
+					domestic: 'https://home-1257933320.cos.ap-guangzhou.myqcloud.com/',  // 国内源
+					foreign: 'https://cache-r2-home.jxu124.com/' // 国外源
+				};
+				const ipCheckPromise = fetch('https://ipapi.co/json/')
+					.then(response => response.json())
+					.then(data => {
+						return { isDomestic: data.country_code === 'CN' };
+					})
+					.catch(error => {
+						return { isDomestic: true }; // 失败时默认国内源
+					});
+
+				document.querySelectorAll('[id="load-cdn"]').forEach(ele => {
+					ipCheckPromise.then(result => {
+						const tagName = ele.tagName;
+						const baseUrl = result.isDomestic ? sources.domestic : sources.foreign;
+
+						switch(tagName) {
+							case 'A':
+								ele.href = ele.href + baseUrl + ele.dataset.src;
+								break;
+							default:
+								if(ele.dataset.poster === undefined){
+									ele.src = baseUrl + ele.dataset.src;
+								} else {
+									ele.poster = baseUrl + ele.dataset.poster;
+								}
+						}
+					});
+				})
+
+				ipCheckPromise.then(() => {
+					setTimeout(() => {
+						document.querySelectorAll('video').forEach(ele => {
+							ele.load();
+						});
+					}, 0);
+				});
+			</script>
 			<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/jquery.scrollex@0.2.1/jquery.scrollex.min.js"></script>
-			<script>
-				// 要测试的两个URL
-				const urls = [
-					'index.html', 
-					'https://jxu124.github.io/home/index.html', 
-					'https://home-1257933320.cos.ap-guangzhou.myqcloud.com/home/index.html'
-				];
-				const SCRIPT_SOURCES = [
-					'assets/js/jquery.scrolly.min.js',
-					'assets/js/browser.min.js',
-					'assets/js/breakpoints.min.js',
-					'assets/js/util.js',
-					'assets/js/main.js'
-				];
-				let fastestUrl;
-				
-				// 测试单个URL的响应时间
-				const testUrl = async (url) => {
-					const start = performance.now();
-					try {
-						await fetch(url, { method: 'HEAD', mode: 'no-cors' });
-						return { url, time: performance.now() - start };
-					} catch (e) {
-						return { url, time: Infinity }; // 错误时视为无限慢
-					}
-				};
-
-				// 尝试加载脚本的函数
-				function loadScript(source) {
-					const script = document.createElement('script');
-					script.src = source;
-					script.onload = function() {
-						console.log(`脚本加载成功: ${source}`);
-					};
-					document.body.appendChild(script);
-				}
-		
-				// 测试所有URL并选择最快的
-				(async () => {
-					const results = await Promise.all(urls.map(testUrl));
-					fastestUrl = results.sort((a, b) => a.time - b.time)[0].url;
-					const CDN_BASE_URL = fastestUrl.slice(0, -10);
-					console.log('最快的URL:', CDN_BASE_URL);
-					// 加载图片
-					document.querySelectorAll('.dynamic-src').forEach(origin => {
-						origin.src = CDN_BASE_URL + origin.dataset.src;
-						console.log('origin.src:', origin.src);
-					});
-					// 加载脚本
-					SCRIPT_SOURCES.forEach(scriptSrc => {
-						loadScript(CDN_BASE_URL + scriptSrc);
-					});
-				})();
-			</script>
-
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>

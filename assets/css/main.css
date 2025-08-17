@@ -33,6 +33,17 @@ body {
 	line-height: 1;
 }
 
+.rounded-video {
+	/* 设置圆角，值越大圆角越明显 */
+	border-radius: 15px;
+	/* 可选：添加阴影增强视觉效果 */
+	box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+	background-color: rgba(54, 51, 56, 0.8);
+	width: 100%;
+	max-width: 576px;
+	max-height: 324px;
+}
+
 ol, ul {
 	list-style: none;
 }
